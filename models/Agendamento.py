@@ -8,25 +8,23 @@ class Agendamento(db.Model):
     servicoID = db.Column(db.Integer, db.ForeignKey('servicos.id'), nullable=False)
     data = db.Column(db.String(10), nullable=False)
     hora = db.Column(db.String(5), nullable=False)
+    atendimento_confirmado = db.Column(db.Boolean, nullable=False)
+    status = db.Column(db.Boolean, nullable=False)
 
 
-    def __init__(self, id, clienteID, servicoID, data, hora):
+    def __init__(self, clienteID, servicoID, data, hora, atendimento_confirmado, status):
         self.clienteID = clienteID
         self.servicoID = servicoID
         self.data = data
         self.hora = hora
+        self.atendimento_confirmado = atendimento_confirmado
+        self.status = status
 
     def id_set(self, novo_id ):
         self.id = novo_id
 
     def id_get(self ):
         return self.id
-    
-    def nome_set(self, novo_nome):
-        self.nome = novo_nome
-
-    def nome_get(self ):
-        return self.nome
     
     def clienteID_set(self, novo_clienteID ):
         self.clienteID = novo_clienteID
@@ -51,3 +49,15 @@ class Agendamento(db.Model):
 
     def hora_get(self):
         return self.hora
+    
+    def status_set(self, novo_status):
+        self.status = novo_status
+
+    def status_get(self):
+        return self.status
+
+    def atendimento_confirmado_set(self, novo_atendimento_confirmado):
+        self.atendimento_confirmado = novo_atendimento_confirmado
+
+    def atendimento_confirmado_get(self):
+        return self.atendimento_confirmado

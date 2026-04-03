@@ -1,8 +1,9 @@
 from init_db import db
 from flask_login import UserMixin
 
-class Cliente(db.Model, UserMixin):
-    __tablename__ = 'clientes'
+
+class Admin(db.Model, UserMixin):
+    __tablename__ = 'admins'
 
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100), nullable=False)
@@ -14,13 +15,13 @@ class Cliente(db.Model, UserMixin):
     def id_set(self, novo_id ):
         self.id = novo_id
 
-    def id_get(self ):
+    def id_get(self):
         return self.id
     
     def nome_set(self, novo_nome):
         self.nome = novo_nome
 
-    def nome_get(self ):
+    def nome_get(self):
         return self.nome
     
     def senha_set(self, novo_senha):
