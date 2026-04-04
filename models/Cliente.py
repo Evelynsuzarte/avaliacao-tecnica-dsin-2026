@@ -5,23 +5,24 @@ class Cliente(db.Model, UserMixin):
     __tablename__ = 'clientes'
 
     id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(100), nullable=False)
+    login = db.Column(db.String(100), nullable=False)
     senha = db.Column(db.String(100), nullable=False)
 
-    def __init__(self, nome):
-        self.nome = nome
+    def __init__(self, login, senha):
+        self.login = login
+        self.senha = senha
 
     def id_set(self, novo_id ):
         self.id = novo_id
 
     def id_get(self ):
-        return self.id
+        return self.id 
     
-    def nome_set(self, novo_nome):
-        self.nome = novo_nome
+    def login_set(self, novo_login):
+        self.login = novo_login
 
-    def nome_get(self ):
-        return self.nome
+    def login_get(self ):
+        return self.login
     
     def senha_set(self, novo_senha):
         self.senha = novo_senha
@@ -29,3 +30,5 @@ class Cliente(db.Model, UserMixin):
     def senha_get(self):
         return self.senha
     
+    def get_id(self):
+        return f"usuario-{self.id}"

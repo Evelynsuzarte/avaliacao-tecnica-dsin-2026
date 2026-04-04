@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/para_form_styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo-semfundo.png') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <title> Cabeleleila Leila - Salão de beleza</title>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <span><img class="logo" src="{{ url_for('static', filename='img/logo-semfundo.png') }}" alt="logo"></span>
+            <h1 id="msg-boas-vindas">Sejam bem vindos!</h1>
+        </div>    
+    </header>
+
+    <main class="container-login">
+        <span><img class="img-login" src="{{ url_for('static', filename='img/logo-semfundo.png') }}" alt="logo"></span>
+
+            <form class="form-login" method="POST" action="/">
+                <label>Login</label><br>
+                <input type="text" name="login" required><br>
+
+                <label>Senha</label><br>
+                <input type="password" name="senha" required><br>
+
+                <button type="submit" name="tipo" value="admin">Entrar como admin</button>
+                <button type="submit" name="tipo" value="usuario">Entrar como usuário</button>
+                {% if mensagem_login %}
+                    <p style="color:red;">{{ mensagem_login }}</p>
+                {% endif %}
+            </form>
+        
+
+        <form class="form-login" method="POST" action="/adicionar_cliente">
+            <h4>Se é sua primeira vez aqui, cadastre-se:</h4><br>
+            <label>Login</label><br>
+            <input type="text" name="login" required><br>
+
+            <label>Senha:</label><br>
+            <input type="password" name="senha" required><br>
+
+            <button type="submit">Cadastre-se</button>
+            {% if mensagem_cadastro %}
+                <p style="color:green;">{{ mensagem_cadastro }}</p>
+            {% endif %}
+        </form>
+    </main>
+
+    <footer>
+        <p >Cabeleleila Leila - Salão de Beleza</p>
+        <p >Rua Moranguinho, 1234, Bairro Salada de Frutas - Feira de Santana</p>
+    </footer>
+
+    <script src="script_rep.js"></script>
+
+</body>
+
+</html>

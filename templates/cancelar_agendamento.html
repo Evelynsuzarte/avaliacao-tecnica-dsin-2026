@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/para_table_styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo-semfundo.png') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <title> Cabeleleila Leila - Salão de beleza</title>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <span>
+                <img class="logo" src="{{ url_for('static', filename='img/logo-semfundo.png') }}" alt="logo"> 
+                <a href="{{ url_for('painel') }}"><button id="btn-voltar">Voltar</button></a>
+            </span>
+            <h1 id="msg-boas-vindas">Seja bem vinda(o) {{ current_user.login_get()}}!</h1>
+            <a href="{{ url_for('logout') }}"><button id="btn-logout">logout</button></a>
+        </div>    
+    </header>
+
+    <main class="container-main">
+        <h1>Cancelamento de agendamentos</h1>
+
+        {% if mensagem %}
+            <div class="mensagem">{{ mensagem }}</div>
+        {% endif %}
+
+        {% if agendamentos %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cliente</th>
+                    <th>Serviço</th>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>Status do atendimento</th>
+                    <th>Status de confirmação</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ag in agendamentos %}
+                    {% set c = clientes | selectattr("id", "equalto", ag.clienteID_get()) | first %}
+                    {% set s = servicos | selectattr("id", "equalto", ag.servicoID_get()) | first %}
+                <tr>
+                    <td>{{ ag.id_get() }}</td>
+                    <td>{{ c.login_get() if c else '---' }}</td>
+                    <td>{{ s.nome_get() if s else '---' }}</td>
+                    <td>{{ ag.data_get() }}</td>
+                    <td>{{ ag.hora_get() }}</td>
+                    <td>{{ ag.status_get() }}</td>
+                    <td>{{ ag.atendimento_confirmado_get() }}</td>
+                    <td>
+                        <form method="POST" action="{{ url_for('cancelar_agendamento') }}">
+                            <input type="hidden" name="agendamentoID" value="{{ ag.id_get() }}">
+                            <button type="submit">Cancelar</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>Nenhum agendamento encontrado.</p>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p >Cabeleleila Leila - Salão de Beleza</p>
+        <p >Rua Moranguinho, 1234, Bairro Salada de Frutas - Feira de Santana</p>
+    </footer>
+
+    <script src="script_rep.js"></script>
+
+</body>
+
+</html>

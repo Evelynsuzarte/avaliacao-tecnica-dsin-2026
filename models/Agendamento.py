@@ -8,8 +8,8 @@ class Agendamento(db.Model):
     servicoID = db.Column(db.Integer, db.ForeignKey('servicos.id'), nullable=False)
     data = db.Column(db.String(10), nullable=False)
     hora = db.Column(db.String(5), nullable=False)
-    atendimento_confirmado = db.Column(db.Boolean, nullable=False)
-    status = db.Column(db.Boolean, nullable=False)
+    atendimento_confirmado = db.Column(db.String(10), nullable=False)
+    status = db.Column(db.String(10), nullable=False)
 
 
     def __init__(self, clienteID, servicoID, data, hora, atendimento_confirmado, status):

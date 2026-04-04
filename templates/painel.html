@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/painel_styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo-semfundo.png') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <title> Cabeleleila Leila - Salão de beleza</title>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <span><img class="logo" src="{{ url_for('static', filename='img/logo-semfundo.png') }}" alt="logo"></span>
+            <h1 id="msg-boas-vindas">Seja bem vinda(o) {{ current_user.login }}!</h1>
+            <a href="{{ url_for('logout') }}"><button id="btn-listagem">logout</button></a>
+        </div>    
+    </header>
+
+    <main>
+        <section class="acoes">
+            <a href="/agendamentos"><button id="btn-listagem">Listagem de agendamentos</button></a>
+            <a href="/alterar_agendamento"><button id="btn-editar">Editar agendamentos</button></a>
+            <a href="/agendar"><button id="btn-novo-agend">Novo agendamento</button></a>
+            {% if current_user.__class__.__name__ == 'Admin' %}
+                <a href="/adicionar_cliente"><button id="btn-cadastarcliente">Cadastrar clientes</button></a>
+                <a href="/adicionar_servicos"><button id="btn-cadastrar-serv">Cadastrar serviços</button></a>
+                <a href="/cancelar_agendamento"><button id="btn-cadastrar-serv">Cancelar agendamento</button></a>
+            {% endif %}
+    </main>
+
+    <footer>
+        <p >Cabeleleila Leila - Salão de Beleza</p>
+        <p >Rua Moranguinho, 1234, Bairro Salada de Frutas - Feira de Santana</p>
+    </footer>
+
+    <script src="script_rep.js"></script>
+
+</body>
+
+</html>

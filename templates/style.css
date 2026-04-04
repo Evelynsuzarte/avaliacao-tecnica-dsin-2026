@@ -1,0 +1,149 @@
+
+
+/* Login */
+#btn-login{
+    position:relative;
+    background-color: rgb(185, 32, 190);
+    color: white;
+    padding: 10px 20px;
+    left: 80px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+}
+
+/* Navigation */
+header nav{
+ height:24px;
+ 
+ visibility:visible;
+ opacity:1;
+ cursor:auto;
+ flex:0 1 auto;
+ display:flex;
+ border-width:0px;
+ border-color:#ea2323;
+ border-style:none;
+ border-top-left-radius:0px;
+ padding: 1%;
+ margin-left:0px;
+ width:302px;
+}
+
+/* Boas vindas */
+#msg-boas-vindas{
+ padding-left:0px;
+ padding-right:51px;
+ margin-right:-9px;
+}
+
+
+
+
+
+
+
+.product-grid {
+    display: grid;
+    grid-gap: 2%;
+    grid-area: conteudo;
+    width: 70%;
+    padding: 2% 15%;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    gap: 1vh;
+    border: 2px solid  rgb(185, 32, 190);
+    margin: 3% 0%;
+    box-shadow: 2px 2px 5px  rgb(185, 32, 190);
+}
+
+.card:hover {
+    transition: 1s;
+    transform: scale(1.05);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+}
+
+.product-grid img{
+    border-bottom: 5px solid  rgb(185, 32, 190);
+    object-fit: cover;
+    height: 20vh;
+    width: 100%;
+}
+
+.card h2{
+    font-weight: 100;
+    text-align: center;
+    width: 20vh;
+    border-bottom: 1px solid black;
+}
+
+
+@media (max-width: 480px) {
+
+    .product-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    ul {
+        width: 50vw;
+        align-items: center;
+    }
+
+    .logo{
+        width: 5vh;
+    }
+
+    ul li a {
+        font-size: 12px;
+        padding: 0.3rem 0.6rem;
+    }
+}
+
+.out-of-stock{
+    color: rgb(222, 33, 33);
+    font-style: bold;
+}
+
+
+.acoes{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2vh
+}
+
+
+
+
+
+
+
+
+/* editei aqui */
+
+.price{
+    
+    font-weight: 400;
+    font-size: 3vh;
+}
+
+.price:hover{
+    transition: 1s;
+    transform: scale(1.5);
+}
+
+.status{
+    font-weight: 200;
+    font-size: 3vh;
+}
+

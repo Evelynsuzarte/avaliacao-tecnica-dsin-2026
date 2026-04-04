@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/para_form_styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo-semfundo.png') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <title> Cabeleleila Leila - Salão de beleza</title>
+</head>
+<body>
+  <header>
+        <div class="nav-container">
+            <span><img class="logo" src="{{ url_for('static', filename='img/logo-semfundo.png') }}" alt="logo"></span>
+            <a href="{{ url_for('painel') }}"><button id="btn-voltar">Voltar</button></a>
+            <h1 id="msg-boas-vindas">Seja bem vinda(o) {{ current_user.login_get() }}!</h1>
+            <a href="{{ url_for('logout') }}"><button id="btn-logout">logout</button></a>
+        </div>    
+    </header>
+
+<main class="container-main">
+    <h1>Criar novo agendamento</h1>
+    
+    {% if mensagem %}
+        <div style="padding:10px; margin:10px 0; border:1px solid #ccc; background:#f0f0f0;">
+            {{ mensagem }}
+        </div>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('agendar') }}">
+        {% if current_user.__class__.__name__ == 'Admin' %}
+            <label for="cliente">Cliente:</label>
+            <select name="cliente" id="cliente" required>
+                <option value="" disabled selected> Selecione o cliente </option>
+                {% for c in clientes %}
+                    <option value="{{ c.id }}" {% if request.form.get('cliente') == c.id|string %}selected{% endif %}>
+                        {{ c.login_get() }}
+                    </option>
+                {% endfor %}
+            </select><br><br>
+
+            <label for="servico">Serviço:</label>
+            <select name="servico" id="servico" required>
+                <option value="" disabled selected>Selecione o serviço</option>
+                {% for s in servicos %}
+                    <option value="{{ s.id }}" {% if request.form.get('servico') == s.id|string %}selected{% endif %}>
+                        {{ s.nome }}
+                    </option>
+                {% endfor %}
+            </select><br><br>
+
+
+            <label for="data">Data:</label>
+            <input type="date" name="data" id="data" value="{{ request.form.get('data','') }}" required><br><br>
+
+            <label for="hora">Hora:</label>
+            <input type="time" name="hora" id="hora" value="{{ request.form.get('hora','') }}" required><br><br>
+
+            <label for="atendimento_confirmado">Confirmado?</label>
+            <select name="atendimento_confirmado" id="atendimento_confirmado" required>
+                <option value="sim" {% if request.form.get('atendimento_confirmado')=='sim' %}selected{% endif %}>Sim</option>
+                <option value="nao" {% if request.form.get('atendimento_confirmado')=='nao' %}selected{% endif %}>Não</option>
+            </select><br><br>
+
+            <label for="status">Status:</label>
+            <select name="status" id="status" required>
+                <option value="agendado" {% if request.form.get('status')=='agendado' %}selected{% endif %}>Agendado</option>
+                <option value="concluido" {% if request.form.get('status')=='concluido' %}selected{% endif %}>Concluído</option>
+                <option value="cancelado" {% if request.form.get('status')=='cancelado' %}selected{% endif %}>Cancelado</option>
+            </select><br><br>
+
+        {% else %}
+            <input type="hidden" name="cliente" value="{{ current_user.id }}">
+            <input type="hidden" name="atendimento_confirmado" value="nao">
+            <input type="hidden" name="status" value="agendado">
+
+            <label for="servico">Serviço:</label>
+            <select name="servico" id="servico" required>
+                <option value="" disabled selected>Selecione o serviço</option>
+                {% for s in servicos %}
+                    <option value="{{ s.id }}" {% if request.form.get('servico') == s.id|string %}selected{% endif %}>
+                        {{ s.nome }}
+                    </option>
+                {% endfor %}
+            </select><br><br>
+
+            <label for="data">Data:</label>
+            <input type="date" name="data" id="data" value="{{ request.form.get('data','') }}" required><br><br>
+
+            <label for="hora">Hora:</label>
+            <input type="time" name="hora" id="hora" value="{{ request.form.get('hora','') }}" required><br><br>
+        {% endif %}
+
+        {% if mensagem and ('já tem' in mensagem.lower() or 'semana' in mensagem.lower()) %}
+            <p>{{ mensagem }}</p>
+            <button type="submit" name="sugestao" value="sim">Sim, usar essa data</button>
+            <button type="submit" name="sugestao" value="nao">Não, manter minha data</button>
+        {% else %}
+            <button type="submit">Confirmar agendamento</button>
+        {% endif %}
+    </form>
+</main>
+
+<footer>
+    <p>Cabeleleila Leila - Salão de Beleza</p>
+    <p>Rua Moranguinho, 1234, Bairro Salada de Frutas - Feira de Santana</p>
+</footer>
+</body>
+</html>

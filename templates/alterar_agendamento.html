@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/para_table_styles.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo-semfundo.png') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <title> Cabeleleila Leila - Salão de beleza</title>
+</head>
+<body>
+  <header>
+        <div class="nav-container">
+            <span><img class="logo" src="{{ url_for('static', filename='img/logo-semfundo.png') }}" alt="logo"></span>
+            <a href="{{ url_for('painel') }}"><button id="btn-voltar">Voltar</button></a>
+            <h1 id="msg-boas-vindas">Seja bem vinda(o) {{ current_user.login_get() }}!</h1>
+            <a href="{{ url_for('logout') }}"><button id="btn-logout">logout</button></a>
+        </div>    
+    </header>
+
+  <main class="container-main">
+    <h1>Alterar agendamento</h1>
+
+    {% if sugestao_data %}
+        <div class="mensagem-sugestao">
+            <p>{{ mensagem }}</p>
+            <form method="POST" action="{{ url_for('alterar_agendamento') }}">
+                <input type="hidden" name="agendamento_id" value="{{ agendamento_pendente_id }}">
+                <input type="hidden" name="data" value="{{ nova_data_temp }}">
+                <input type="hidden" name="hora" value="{{ nova_hora_temp }}">
+                
+                <button type="submit" name="sugestao" value="sim">Sim, usar dia {{ sugestao_data }}</button>
+                <button type="submit" name="sugestao" value="nao">Não, manter minha escolha</button>
+            </form>
+        </div>
+    
+    {% elif mensagem %}
+        <div class="mensagem">{{ mensagem }}</div>
+    {% endif %}
+
+    {% if agendamentos %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Serviço</th>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>Status</th>
+                    <th>Confirmado</th>
+                    <th>Salvar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ag in agendamentos %}
+                <tr>
+                    <form method="POST" action="/alterar_agendamento">
+                        <input type='hidden' value="{{ ag.id_get() }}" name="agendamento_id">
+
+                        <td>{{ clientes[ag.clienteID_get()]['cliente'] }}</td>
+
+                        <td>
+                            <select name="servico">
+                                {% for s in servicos %}
+                                    <option value="{{ s.id }}" {% if s.id == ag.servicoID_get() %}selected{% endif %}>
+                                        {{ s.nome_get() }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </td>
+
+                        <td>
+                            <input type="date" name="data" value="{{ ag.data_get() }}">
+                        </td>
+
+                        <td>
+                            <input type="time" name="hora" value="{{ ag.hora_get() }}">
+                        </td>
+
+                        <td>
+                            {% if current_user.__class__.__name__ == 'Admin' %}
+                                <select name="status">
+                                    <option value="pendente"  {% if ag.status_get() == 'pendente'  %}selected{% endif %}>Pendente</option>
+                                    <option value="concluido" {% if ag.status_get() == 'concluido' %}selected{% endif %}>Concluído</option>
+                                    <option value="cancelado" {% if ag.status_get() == 'cancelado' %}selected{% endif %}>Cancelado</option>
+                                </select>
+                            {% else %}
+                                {{ ag.status_get() }}
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            {% if current_user.__class__.__name__ == 'Admin' %}
+                                <select name="atendimento_confirmado">
+                                    <option value="sim" {% if ag.atendimento_confirmado_get() == 'sim' %}selected{% endif %}>Sim</option>
+                                    <option value="nao" {% if ag.atendimento_confirmado_get() == 'nao' %}selected{% endif %}>Não</option>
+                                </select>
+                            {% else %}
+                                {{ ag.atendimento_confirmado_get() }}
+                            {% endif %}
+                        </td>
+
+                        <td><button type="submit">Salvar</button></td>
+                    </form>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Nenhum agendamento encontrado.</p>
+    {% endif %}
+</main>
+
+<footer>
+        <p >Cabeleleila Leila - Salão de Beleza</p>
+        <p >Rua Moranguinho, 1234, Bairro Salada de Frutas - Feira de Santana</p>
+    </footer>
+
+    <script src="script_rep.js"></script>
+    
+</html>
