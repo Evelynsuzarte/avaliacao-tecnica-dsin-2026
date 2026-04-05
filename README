@@ -1,0 +1,236 @@
+<div id="inicio">
+    <h1 align="center"> Sistema de salão de beleza - Cabeleleila Leila </h1>
+    <p align="center">
+        <img src="http://img.shields.io/static/v1?label=STATUS&message=Concluido&color=GREEN&style=for-the-badge"/>
+    </p>
+    <p align="center">
+        <img width=300 src="templates\img\logo.png"/>
+    </p>
+	<p align="center"> 
+		Desenvolvido como avaliação técnica para a vaga de Desenvolvimento na DSIN.
+	</p><br>
+</div>
+
+<div id="sumario">
+    <h1>📋Sumário</h1>
+	<ul>
+		<li><a href="#inicio"> <b>Início</b></li>
+        <li><a href="#objetivo"> <b>Objetivo</b></li>
+        <li><a href="#funcionalidades"> <b>Funcionalidades implementadas</b> </a> </li>
+        <li><a href="#tecnologias"> <b>Tecnologias utilizadas</b> </a> </li>
+        <li><a href="#execucao"> <b>Configuração e execução do projeto</b> </a> </li>
+        <li><a href="#endpoints"> <b>Endpoints</b> </a> </li>
+        <li><a href="#entidades"> <b>Entidades do banco de dados</b> </a> </li>
+		<li><a href="#organizacao"> <b>Organização dos arquivos</b> </a> </li>
+	</ul>	
+</div>
+
+<div id="objetivo">
+    <h1>🎯Objetivo</h1>
+    <p>Construir uma plataforma de salão de beleza. O sistema deve permitir que usuários façam seus agendamentos e os gerencie, assim também como a Leila, a administradora do salão.
+</p>
+</div>
+
+
+<div id="funcionalidades">
+	<h1>💻 Funcionalidades implementadas </h1>
+
+	<ul>
+        <h3>Cliente</h3>
+        <li>Cadastro e login</li>
+        <li>Realizar agendamento</li>
+        <li>Opção de aceitar sugestão de mesma data para agendamentos na mesma semana</li>
+        <li>Alterar data e hora do agendamento (até 2 dias de antecedência)</li>
+        <li>Histórico de agendamentos por período</li>
+        <img width=700 src="templates\img\tela-cliente.png"></img>
+    </ul>
+
+    <ul>
+        <h3>Admin</h3>
+        <li>Login dedicado</li>
+        <li>Cadastrar clientes, serviços e agendamentos</li>
+        <li>Listar todos os agendamentos com filtro por período</li>
+        <li>Alterar qualquer campo do agendamento</li>
+        <li>Confirmar agendamento e gerenciar status</li>
+        <li>Cancelar/apaga agendamentos</li>
+        <img width=700 src="templates\img\tela-admin.png"></img>
+    </ul>
+</div>
+
+<div id="tecnologias">
+	<h1>💻 Tecnologias e ferramentas utilizadas </h1>
+	<ul>
+        <li>Python</li>
+        <li>Flask</li>
+        <li>Flask-SQLAlchemy</li>
+        <li>Flask-Login</li>
+        <li>Visual Studio Code</li>
+        <li>Html + CSS (Jinja2)</li>
+        <li>SQLite</li>
+	</ul>	
+</div>
+
+<div id="execucao">
+    <h1>⚙️ Configuração e execução do projeto</h1>
+    <p>Para configurar e executar o projeto corretamente, siga as etapas abaixo:</p>
+    <h3>1️⃣ Faça o download do projeto</h3>
+    <p>Clone o repositório diretamente do GitHub utilizando o comando:</p>
+    <a href="https://github.com/Evelynsuzarte/avaliacao-tecnica-dsin-2026">https://github.com/Evelynsuzarte/avaliacao-tecnica-dsin-2026</a>
+    <h3>2️⃣ Abra o projeto na sua IDE e instale as dependências</h3>
+    <p>Após o download, abra a pasta do projeto na IDE de sua preferência, e lembre-se de ter instalado as dependências.</p>
+    <code> pip install flask flask-login flask-sqlalchemy</code>
+    <h3>3️⃣ Execute o projeto</h3>
+    <p>No terminal integrado da IDE, aperte no play para rodar ou execute o comando:</p>
+    <p><code>python app.py</code></p>
+    <h3>4️⃣ Execute o link no terminal</h3>
+    <p> O servidor do Flask vai ser levantado no link abaixo:</p>
+    <a href="http://127.0.0.1:5000/">http://127.0.0.1:5000/</a>
+
+
+    <h1>⚠️ Credenciais⚠️</h1>
+    <p>O banco de dados já vai ta preenchido com alguns dados de admin, agendamento, serviços e clientes. Algumas funcionalidades tem diferentes acessos permitidos.</p>
+    <p>Acesse para:<br>Admin: login: admin / senha: admin <br>
+    Usuario: login: João Silva / senha: 123</p>
+
+</div>
+
+    
+<div id="endpoints">
+    <h1>🔗Endpoints</h1>
+    <p>O teste deve ser feito diretamente no link de execucao, pois ele tem como retorno as páginas HTML.</p> 
+    <p></p>
+    <table border="1" align="center">
+        <tr>
+            <td>Endpoint</td>
+            <td>Método</td>
+            <td>Descrição</td>
+            <td>Link</td>
+        </tr>
+        <tr>
+            <td>/</td>
+            <td>GET, POST</td>
+            <td>Login de admin e cliente</td>
+            <td>http://127.0.0.1:5000/</td>
+        </tr>
+        <tr>
+            <td>/logout</td>
+            <td>GET</td>
+            <td>Encerra a sessão</td>
+            <td>http://127.0.0.1:5000/logout</td>
+        </tr>
+        <tr>
+            <td>/painel</td>
+            <td>GET</td>
+            <td>Painel principal após login</td>
+            <td>http://127.0.0.1:5000/painel</td>
+        </tr>
+        <tr>
+            <td>/adicionar_cliente</td>
+            <td>GET, POST</td>
+            <td>Cadastrar novo cliente</td>
+            <td>http://127.0.0.1:5000/adicionar_cliente</td>
+        </tr>
+        <tr>
+            <td>/adicionar_servicos</td>
+            <td>GET, POST</td>
+            <td>Cadastrar novo serviço (admin)</td>
+            <td>http://127.0.0.1:5000/adicionar_servicos</td>
+        </tr>
+        <tr>
+            <td>/agendar</td>
+            <td>GET, POST</td>
+            <td>Criar novo agendamento</td>
+            <td>http://127.0.0.1:5000/agendar</td>
+        </tr>
+        <tr>
+            <td>/alterar_agendamento</td>
+            <td>GET, POST</td>
+            <td>Alterar agendamento existente</td>
+            <td>http://127.0.0.1:5000/alterar_agendamento</td>
+        </tr>
+        <tr>
+            <td>/agendamentos</td>
+            <td>GET, POST</td>
+            <td>Listar agendamentos por período</td>
+            <td>http://127.0.0.1:5000/agendamentos</td>
+        </tr>
+        <tr>
+            <td>/cancelar_agendamento</td>
+            <td>GET, POST</td>
+            <td>Cancelar agendamento (admin)</td>
+            <td>http://127.0.0.1:5000/cancelar_agendamento</td>
+        </tr>
+        <tr>
+            <td>/confirmar_agendamento</td>
+            <td>GET, POST</td>
+            <td>Confirmar agendamento (admin)</td>
+            <td>http://127.0.0.1:5000/confirmar_agendamento</td>
+        </tr>
+    </table>
+
+<div id="entidades">
+    <h1>🎲Entidades do banco de dados</h1>
+    <p>A seguir, a modelagem do banco de dados, tabelas com seus atributos.<br>
+        Caso você queria inicializar novamente o banco de dados, basta escluir o arquivo <strong>database.db</strong>, que ele será inicializado novamente ao rodar o servidor. 
+    </p>
+    <table border="1" align="center">
+    <tr>
+        <td><strong>Entidade</strong></td>
+        <td><strong>Atributos</strong></td>
+    </tr>
+    <tr>
+        <td>Cliente</td>
+        <td>id, login, senha</td>
+    </tr>
+    <tr>
+        <td>Admin</td>
+        <td>id, login, senha</td>
+    </tr>
+    <tr>
+        <td>Agendamento</td>
+        <td>id, clienteID, servicoID, data, hora, atendimento_confirmado, status</td>
+    </tr>
+    <tr>
+        <td>Servico</td>
+        <td>id, nome, preco</td>
+    </tr>
+</table>
+
+
+<div id="organizacao">
+    <h1>📝 Organização dos arquivos</h1> 
+    <pre><code>
+    ├── models/
+    │   ├── Admin.py
+    │   ├── Agendamento.py
+    │   ├── Cliente.py
+    │   └── Servico.py
+    ├── static/
+    │   ├── css/
+    │   │   ├── painel_styles.css
+    │   │   ├── para_form_styles.css
+    │   │   ├── para_table_styles.css
+    │   │   └── style.css        ← mover de templates/
+    │   └── img/
+    │       └── logo-semfundo.png ← mover de templates/img/
+    ├── templates/
+    │   ├── adicionar_agendamento.html
+    │   ├── adicionar_cliente.html
+    │   ├── adicionar_servicos.html
+    │   ├── alterar_agendamento.html
+    │   ├── cancelar_agendamento.html
+    │   ├── listagem_agendamento.html
+    │   ├── login.html
+    │   └── painel.html
+    ├── app.py
+    ├── init_db.py
+    ├── database.db
+    └── README.md
+    </code></pre>
+   
+    
+</div>
+
+<hr> <p align="center">
+    2026
+</p>
