@@ -35,28 +35,28 @@
 
 
 <div id="funcionalidades">
-	<h1>💻 Funcionalidades implementadas </h1>
+    <h1>💻 Funcionalidades implementadas</h1>
 
-	<ul>
-        <h3>Cliente</h3>
+    <h3>Cliente</h3>
+    <ul>
         <li>Cadastro e login</li>
         <li>Realizar agendamento</li>
         <li>Opção de aceitar sugestão de mesma data para agendamentos na mesma semana</li>
         <li>Alterar data e hora do agendamento (até 2 dias de antecedência)</li>
         <li>Histórico de agendamentos por período</li>
-        <img width=700 src="prints_tela\cliente\tela-cliente.png"></img>
     </ul>
+    <img width="700" src="prints_tela/cliente/tela-cliente.png">
 
+    <h3>Admin</h3>
     <ul>
-        <h3>Admin</h3>
         <li>Login dedicado</li>
         <li>Cadastrar clientes, serviços e agendamentos</li>
         <li>Listar todos os agendamentos com filtro por período</li>
         <li>Alterar qualquer campo do agendamento</li>
         <li>Confirmar agendamento e gerenciar status</li>
-        <li>Cancelar/apaga agendamentos</li>
-        <img width=700 src="prints_tela\admin\tela-admin.png"></img>
+        <li>Cancelar/apagar agendamentos</li>
     </ul>
+    <img width="700" src="prints_tela/admin/tela-admin.png">
 </div>
 
 <div id="tecnologias">
@@ -88,13 +88,15 @@
     <p> O servidor do Flask vai ser levantado no link abaixo:</p>
     <a href="http://127.0.0.1:5000/">http://127.0.0.1:5000/</a>
 
-    
 
 
-    <h1>⚠️ Credenciais⚠️</h1>
-    <p>O banco de dados já vai ta preenchido com alguns dados de admin, agendamento, serviços e clientes. Algumas funcionalidades tem diferentes acessos permitidos.</p>
-    <p>Acesse para:<br>Admin: login: admin / senha: admin <br>
-    Usuario: login: João Silva / senha: 123</p>
+    <h1>⚠️ Credenciais ⚠️</h1>
+<p>O banco de dados já vai estar preenchido com alguns dados de admin, agendamentos, serviços e clientes. Algumas funcionalidades têm diferentes acessos permitidos.</p>
+
+<ul>
+    <li><strong>Admin:</strong> login: admin / senha: admin</li>
+    <li><strong>Usuário:</strong> login: João Silva / senha: 123</li>
+</ul>
 
 </div>
 
