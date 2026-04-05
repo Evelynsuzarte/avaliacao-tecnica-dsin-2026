@@ -36,7 +36,6 @@
 
 <div id="funcionalidades">
     <h1>💻 Funcionalidades implementadas</h1>
-
     <h3>Cliente</h3>
     <ul>
         <li>Cadastro e login</li>
@@ -46,7 +45,6 @@
         <li>Histórico de agendamentos por período</li>
     </ul>
     <img width="700" src="prints_tela/cliente/tela-cliente.png">
-
     <h3>Admin</h3>
     <ul>
         <li>Login dedicado</li>
@@ -86,12 +84,9 @@
     <p><code>python app.py</code></p>
     <h3>4️⃣ Execute o link no terminal</h3>
     <p> O servidor do Flask vai ser levantado no link abaixo:</p>
-    <a href="http://127.0.0.1:5000/">http://127.0.0.1:5000/</a>
-
-
-
-    <h1>⚠️ Credenciais ⚠️</h1>
-<p>O banco de dados já vai estar preenchido com alguns dados de admin, agendamentos, serviços e clientes. Algumas funcionalidades têm diferentes acessos permitidos.</p>
+    <a href="http://127.0.0.1:5000/">http://127.0.0.1:5000/</a><br><br>
+    <h1>⚠️ Credenciais⚠️</h1>
+    <p>O banco de dados já vai estar preenchido com alguns dados de admin, agendamentos, serviços e clientes. Algumas funcionalidades têm diferentes acessos permitidos.</p>
 
 <ul>
     <li><strong>Admin:</strong> login: admin / senha: admin</li>
