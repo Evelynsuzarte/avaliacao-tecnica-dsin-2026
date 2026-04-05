@@ -257,7 +257,7 @@ def alterar_agendamento():
                         agendamento.atendimento_confirmado_set(novo_atend_confirmado)
 
                     db.session.commit()
-                    mensagem = f"Agendamento {agendamento.id} alterado com sucesso!"
+                    mensagem = f"Agendamento alterado com sucesso!"
 
                 # cliente pode alterar data se maior que 2 dias
                 elif isinstance(current_user, Cliente):
@@ -269,11 +269,10 @@ def alterar_agendamento():
 
                     if novo_servico:
                         agendamento.servicoID_set(novo_servico)
-
                     if nova_hora:
                         agendamento.hora_set(nova_hora)
 
-                    if nova_data and nova_hora:
+                    if nova_data :
                         hoje = date.today()
                         data_agendamento = datetime.strptime(nova_data, '%Y-%m-%d').date()
                         dias_restantes = (data_agendamento - hoje).days
@@ -281,7 +280,7 @@ def alterar_agendamento():
                             agendamento.data_set(nova_data)
                             agendamento.hora_set(nova_hora)
                             db.session.commit()
-                            mensagem = f"Data do agendamento {agendamento.id} alterada com sucesso!"
+                            mensagem = f"Data do agendamento alterada com sucesso!"
                         else:
                             mensagem = "Não é possível alterar com menos de 2 dias de antecedência, ligue no nosso telefone."
             else:

@@ -4,10 +4,12 @@
         <img src="http://img.shields.io/static/v1?label=STATUS&message=Concluido&color=GREEN&style=for-the-badge"/>
     </p>
     <p align="center">
-        <img width=300 src="templates\img\logo.png"/>
+        <img width=300 src="prints_tela\logo.png"/>
     </p>
 	<p align="center"> 
 		Desenvolvido como avaliação técnica para a vaga de Desenvolvimento na DSIN.
+        <p> O vídeo da demonstração está disponível em:</p>
+        <a href="https://youtu.be/aETQU9OHL6s">https://youtu.be/aETQU9OHL6s</a>
 	</p><br>
 </div>
 
@@ -42,7 +44,7 @@
         <li>Opção de aceitar sugestão de mesma data para agendamentos na mesma semana</li>
         <li>Alterar data e hora do agendamento (até 2 dias de antecedência)</li>
         <li>Histórico de agendamentos por período</li>
-        <img width=700 src="templates\img\tela-cliente.png"></img>
+        <img width=700 src="prints_tela\cliente\tela-cliente.png"></img>
     </ul>
 
     <ul>
@@ -53,7 +55,7 @@
         <li>Alterar qualquer campo do agendamento</li>
         <li>Confirmar agendamento e gerenciar status</li>
         <li>Cancelar/apaga agendamentos</li>
-        <img width=700 src="templates\img\tela-admin.png"></img>
+        <img width=700 src="prints_tela\admin\tela-admin.png"></img>
     </ul>
 </div>
 
@@ -85,6 +87,8 @@
     <h3>4️⃣ Execute o link no terminal</h3>
     <p> O servidor do Flask vai ser levantado no link abaixo:</p>
     <a href="http://127.0.0.1:5000/">http://127.0.0.1:5000/</a>
+
+    
 
 
     <h1>⚠️ Credenciais⚠️</h1>

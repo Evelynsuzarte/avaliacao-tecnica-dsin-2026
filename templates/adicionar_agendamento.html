@@ -14,9 +14,11 @@
 <body>
   <header>
         <div class="nav-container">
-            <span><img class="logo" src="{{ url_for('static', filename='img/logo-semfundo.png') }}" alt="logo"></span>
-            <a href="{{ url_for('painel') }}"><button id="btn-voltar">Voltar</button></a>
-            <h1 id="msg-boas-vindas">Seja bem vinda(o) {{ current_user.login_get() }}!</h1>
+            <span>
+                <img class="logo" src="{{ url_for('static', filename='img/logo-semfundo.png') }}" alt="logo"> 
+                <a href="{{ url_for('painel') }}"><button id="btn-voltar">Voltar</button></a>
+            </span>
+            <h1 id="msg-boas-vindas">Seja bem vinda(o) {{ current_user.login_get()}}!</h1>
             <a href="{{ url_for('logout') }}"><button id="btn-logout">logout</button></a>
         </div>    
     </header>
@@ -24,12 +26,6 @@
 <main class="container-main">
     <h1>Criar novo agendamento</h1>
     
-    {% if mensagem %}
-        <div style="padding:10px; margin:10px 0; border:1px solid #ccc; background:#f0f0f0;">
-            {{ mensagem }}
-        </div>
-    {% endif %}
-
     <form method="POST" action="{{ url_for('agendar') }}">
         {% if current_user.__class__.__name__ == 'Admin' %}
             <label for="cliente">Cliente:</label>
@@ -95,7 +91,7 @@
         {% endif %}
 
         {% if mensagem and ('já tem' in mensagem.lower() or 'semana' in mensagem.lower()) %}
-            <p>{{ mensagem }}</p>
+            <p class="mensagem-aviso" >{{ mensagem }}</p>
             <button type="submit" name="sugestao" value="sim">Sim, usar essa data</button>
             <button type="submit" name="sugestao" value="nao">Não, manter minha data</button>
         {% else %}

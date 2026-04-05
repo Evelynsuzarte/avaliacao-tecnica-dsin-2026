@@ -14,9 +14,11 @@
 <body>
   <header>
         <div class="nav-container">
-            <span><img class="logo" src="{{ url_for('static', filename='img/logo-semfundo.png') }}" alt="logo"></span>
-            <a href="{{ url_for('painel') }}"><button id="btn-voltar">Voltar</button></a>
-            <h1 id="msg-boas-vindas">Seja bem vinda(o) {{ current_user.login_get() }}!</h1>
+            <span>
+                <img class="logo" src="{{ url_for('static', filename='img/logo-semfundo.png') }}" alt="logo"> 
+                <a href="{{ url_for('painel') }}"><button id="btn-voltar">Voltar</button></a>
+            </span>
+            <h1 id="msg-boas-vindas">Seja bem vinda(o) {{ current_user.login_get()}}!</h1>
             <a href="{{ url_for('logout') }}"><button id="btn-logout">logout</button></a>
         </div>    
     </header>
@@ -49,7 +51,7 @@
         <p >Rua Moranguinho, 1234, Bairro Salada de Frutas - Feira de Santana</p>
     </footer>
 
-    <script src="script_rep.js"></script>
+    
 
 </body>
 

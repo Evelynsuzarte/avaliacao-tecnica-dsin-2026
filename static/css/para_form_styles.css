@@ -9,14 +9,13 @@
 body {
     display: grid;
     overflow-x: hidden; 
-    grid-template-rows: 1fr auto;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
         "cabecalho"
         "conteudo"
         "rodape";
-    font-family: "Oswald", sans-serif;
-    font-weight: 400;
     background-color: rgba(117, 1, 122, 1);
+    min-height: 100vh;
 }
 
 
@@ -24,16 +23,10 @@ footer {
     grid-area: rodape;
     display: flex;
     flex-direction: column;
-    margin-top: 10vh;
-    width: 100vw;
-    display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgb(185, 32, 190);
     padding: 1%;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
 
 .nav-container{
@@ -94,4 +87,8 @@ button:hover{
     align-items: center;
     gap: 16px;
     color: white;
+}
+
+.mensagem-aviso{
+    background-color: rgb(180, 36, 36);
 }
